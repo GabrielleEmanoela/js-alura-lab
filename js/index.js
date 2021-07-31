@@ -44,3 +44,15 @@ for (let i = 0; i < paciente.length; i++) {
     tdImc.textContent = imc.toFixed(2);
   }
 }
+//------ Exemplo -----------//
+title.addEventListener("click", mensagemq); //escutador de evento.
+
+function mensagemq() {
+  console.log("Click and");
+}
+//---------------------------//
+var botaoAdicionar = document.querySelector("#adicionar-paciente");
+botaoAdicionar.addEventListener("click", function (event) {
+  event.preventDefault();
+  console.log("Fui clicado");
+});
