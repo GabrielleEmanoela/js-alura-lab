@@ -12,6 +12,7 @@ botaoAdicionar.addEventListener("click", function (event) {
   }
   var tabela = document.querySelector("#tabela-pacientes");
   tabela.appendChild(pacienteTr);
+  addPacienteTable(paciente);
   form.reset();
   var ul = document.querySelector("#mensagens-erro");
   ul.innerHTML = "";
@@ -34,6 +35,12 @@ function obtemForm(form) {
     imc: calculaImc(form.peso.value, form.altura.value),
   };
   return paciente;
+}
+
+function addPacienteTable(paciente) {
+  var pacienteTr = montaTr(paciente);
+  var tabela = document.querySelector("#tabela-pacientes");
+  tabela.appendChild(pacienteTr);
 }
 function montaTr(paciente) {
   var pacienteTr = document.createElement("tr");
