@@ -6,16 +6,23 @@ botaoAdicionar.addEventListener("click", function (event) {
   var pacienteTr = montaTr(paciente);
   var erros = validaPaciente(paciente);
 
-  if (erro.length > 0) {
-    var mensagemErro = document.querySelector("#mensagem-erro");
-    mensagemErro.textContent = erros;
+  if (erros.length > 0) {
+    exibeMensageErro(erros);
     return;
   }
   var tabela = document.querySelector("#tabela-pacientes");
   tabela.appendChild(pacienteTr);
   form.reset();
 });
-
+function exibeMensageErro(erros) {
+  var ul = document.querySelector("#mensagens-erro");
+  ul.innerHTML = ""; // limpa o conteudo anterior
+  erros.forEach(function (error) {
+    var li = document.createElement("li");
+    li.textContent = error;
+    ul.appendChild(li);
+  });
+}
 function obtemForm(form) {
   var paciente = {
     nome: form.nome.value,
@@ -45,8 +52,9 @@ function montaTd(dado, classe) {
 }
 function validaPaciente(paciente) {
   var erros = [];
+  if (paciente.nome.length == 0) erros.push("Nome não preenchido");
+  if (paciente.gordura.length == 0) erros.push("Gordura não preenchida");
   if (!validaPeso(paciente.peso)) erros.push("Peso invalido");
-
   if (!validaAltura(paciente.altura)) erros.push("Altura invalido");
 
   return erros;
