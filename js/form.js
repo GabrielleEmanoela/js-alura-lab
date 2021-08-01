@@ -13,6 +13,8 @@ botaoAdicionar.addEventListener("click", function (event) {
   var tabela = document.querySelector("#tabela-pacientes");
   tabela.appendChild(pacienteTr);
   form.reset();
+  var ul = document.querySelector("#mensagens-erro");
+  ul.innerHTML = "";
 });
 function exibeMensageErro(erros) {
   var ul = document.querySelector("#mensagens-erro");
