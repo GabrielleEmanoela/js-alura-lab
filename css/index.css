@@ -147,3 +147,6 @@ button:disabled {
   height: 35px;
   margin-bottom: 10px;
 }
+.invisivel {
+  display: none;
+}
