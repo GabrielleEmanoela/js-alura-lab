@@ -142,3 +142,8 @@ button:disabled {
   opacity: 0;
   -webkit-transition: opacity 0.5s linear;
 }
+#filtrar-tabela {
+  width: 200px;
+  height: 35px;
+  margin-bottom: 10px;
+}
