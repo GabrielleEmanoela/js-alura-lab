@@ -4,11 +4,13 @@ botaoAdicionar.addEventListener("click", function (event) {
   var form = document.querySelector("#add-form");
 
   var paciente = obtemForm(form);
-  var pacienteTr = montaTr(paciente);
-  var tabela = document.querySelector("#tabela-pacientes");
+  // var pacienteTr = montaTr(paciente);
 
-  tabela.appendChild(pacienteTr);
-  form.reset();
+  if (validaPaciente(paciente)) {
+    console.log("====================================");
+    console.log("não e valido");
+    return;
+  }
 });
 
 function obtemForm(form) {
@@ -43,4 +45,10 @@ function montaTd(dado) {
   td.textContent = dado;
   td.classList.add("classe");
   return td;
+}
+function validaPaciente(paciente) {
+  if (validaPeso(paciente.peso)) {
+    return true;
+  }
+  return false;
 }
