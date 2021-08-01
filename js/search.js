@@ -8,13 +8,18 @@ botaoAdicionar.addEventListener("click", function () {
   api.open("GET", "https://api-pacientes.herokuapp.com/pacientes");
 
   api.addEventListener("load", function () {
-    var resposta = api.responseText;
+    var erroAjax = document.querySelector("#erro-ajax");
+    if (api.status == 200) {
+      erroAjax.classList.add("invisivel");
+      var resposta = api.responseText;
+      var pacientes = JSON.parse(resposta);
 
-    var pacientes = JSON.parse(resposta);
-
-    pacientes.forEach(function (paciente) {
-      addPacienteTable(paciente);
-    });
+      pacientes.forEach(function (paciente) {
+        addPacienteTable(paciente);
+      });
+    } else {
+      erroAjax.classList.remove("invisivel");
+    }
   });
 
   api.send();
